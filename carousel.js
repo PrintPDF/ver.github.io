@@ -1,53 +1,83 @@
-const images = Array.from(document.getElementsByClassName("carousel__img"));
-const totalImages = images.length;
-let currentImageIndex = 0;
-let intervalId = null; 
-function addTransitionEffectToImages() {
-  images.forEach((img) => {
-    img.style.transition = "transform 1s ease";
-  });
-}
-function showNextImage() {
-  if (currentImageIndex == totalImages - 1) {
-    showPrevImage();
-  } else {
-    if (currentImageIndex === 0) addTransitionEffectToImages();
-    images.forEach((img) => {
-      img.style.transform = `translateX(${(currentImageIndex + 1) * -100}%)`;
-    });
-    currentImageIndex++;
-  }
-}
-function showPrevImage() {
-  if (currentImageIndex === 0) return;
-  images.forEach((img) => {
-    img.style.transform = `translateX(${(currentImageIndex - 1) * -100}%)`;
-  });
-  currentImageIndex--;
-}
-function startCarousel() {
-  if (intervalId) clearInterval(intervalId);
-  intervalId = setInterval(showNextImage, 5000);
-}
-function stopCarousel() {
-  if (intervalId) {
-    clearInterval(intervalId);
-    intervalId = null;
-  }
-}
-const carouselContainer = document.getElementById('carousel__container');
+(function() {
+    const images = Array.from(document.getElementsByClassName("carousel__img"));
+    const totalImages = images.length;
+    let currentImageIndex = 0;
+    let intervalId = null;
 
-if (carouselContainer) {
-  carouselContainer.addEventListener('mouseenter', function(e) {
-    stopCarousel();
-  });
-  carouselContainer.addEventListener('mouseleave', function(e) {
-    startCarousel();
-  });
-  const imgContainers = document.querySelectorAll('.img__container');
-  imgContainers.forEach(container => {
-    container.addEventListener('mouseenter', stopCarousel);
-    container.addEventListener('mouseleave', startCarousel);
-  });
-} 
-startCarousel();
+    const container = document.getElementById('carousel__container');
+    const dotsContainer = document.getElementById('dotsContainer');
+
+    function createDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalImages; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.dataset.index = i;
+            dot.addEventListener('click', function() {
+                goToImage(parseInt(this.dataset.index));
+            });
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function updateDots() {
+        const dots = dotsContainer.querySelectorAll('.dot');
+        dots.forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === currentImageIndex);
+        });
+    }
+
+    function goToImage(index) {
+        if (index < 0) index = totalImages - 1;
+        if (index >= totalImages) index = 0;
+        images.forEach((img) => {
+            img.style.transition = "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+        });
+        images.forEach((img) => {
+            img.style.transform = `translateX(${-index * 100}%)`;
+        });
+        currentImageIndex = index;
+        updateDots();
+    }
+
+    function showNextImage() {
+        goToImage(currentImageIndex + 1);
+    }
+
+    function startCarousel() {
+        if (intervalId) clearInterval(intervalId);
+        intervalId = setInterval(showNextImage, 5000);
+    }
+
+    function stopCarousel() {
+        if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+        }
+    }
+
+    function init() {
+        createDots();
+        images.forEach((img) => {
+            img.style.transition = "none";
+            img.style.transform = "translateX(0)";
+        });
+        void images[0].offsetHeight;
+        images.forEach((img) => {
+            img.style.transition = "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+        });
+
+        if (container) {
+            container.addEventListener('mouseenter', stopCarousel);
+            container.addEventListener('mouseleave', startCarousel);
+        }
+
+        startCarousel();
+    }
+
+    if (totalImages > 1) {
+        init();
+    } else {
+        images.forEach(img => img.style.transform = "translateX(0)");
+    }
+})();

@@ -1,45 +1,90 @@
 <!doctype html>
-<html>
+<html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026-08-17 发票闪印</title>
-<link rel="stylesheet" href="style.css">
-<link rel="icon" href="img/ico.ico" type="image/x-icon"> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发票闪印</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/ico.ico" type="image/x-icon">
 </head>
-<body class="container">
-<br>
-<div id="carousel__container">
-  <div class="img__container"> <img class="carousel__img" src="img/img1.png" alt="carousel-img" /> </div>
-  <div class="img__container"> <img class="carousel__img" src="img/img2.png" alt="carousel-img" /> </div>
-</div>
-<br>
-<h2><a href="https://github.com/PrintPDF/PrintPDF.github.io/releases/download/PrintPDF/PrintPDF.7z" style="text-decoration: none;">发票闪印 5.0.0 立即下载</a></h2>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 更新日志： </p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 1、文件列表使用了全新的呈现组件</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 2、文件列表新增票据类型列</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 3、金额、票据类型允许手动修改</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 4、票据排序启用后，按类型排序为最高优先级，无需另外设置</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 5、新增快选按钮，可快速勾选相应类型的票据</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 6、票据总金额可大小写一并复制</p>
-<br>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 因为单位有很多电子发票需要打印，每次打印都要用reader阅读器打开，选打印机，选份数，选纸张，选纸盒…… 当然，有些发票有清单页的，以上步骤请再重复一遍…… 多张发票请重复N遍…… </p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 忍了多年，终于决心开发一款方便用于打印PDF发票的辅助工具，无需安装阅读器！</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 使用说明：</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 1、文件导入数量不限，但单个文件限制是10页。支持PDF、OFD和图片版电子发票（非以上三种文件会自动跳过）。文件导入方式： 可在软件界面将文件拖入；可将文件拖至与PrintPDF.exe快捷方式或PrintPDF.exe可执行文件处导入； 可点击按钮“+”添加文件到列表，按钮在“文件列表”右侧。</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 2、被用红色标记的文件名可能是未知的票据类型或不是电子发票，文件不会被打印。可根据提示临时取消限制，或者高级设置中永久取消限制。</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 3、当页面上下两边的长度大于左右两边的长度，打印由横向页面控制，反之由纵向页面控制。</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 4、支持一张A4纸划分为2份-4份，横向页面 - A4 - A4纸设置。</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 5、在本软件中，宽140、120-127mm的纸张，都算是A5纸，当打印机提示请放入A5纸时，请将凭证纸放入打印机即可。</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 6、双击文件列表即可预览，可鼠标滚轮控制页面缩放，双击预览界面可勾选。</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 7、支持保存打印机、打印份数、纸张、颜色、纸盒等设置（文件列表不保存），勾选保存设置并关闭软件界面即可完成保存设置操作，也可在高级设置勾选自动保存设置 。</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 8、点击打印后，如突然想取消此次打印任务，可以点击主界面上的取消打印（不支持远程共享打印机）。</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 9、单纸盒打印机纸张输出优化（同一台打印机，同时使用两种规格纸张此项才会生效）。</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 10、软件无需安装，解压即用。</p>
-<br>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 软件已知问题：</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 部分机器报毒：纯属误报，因为软件使用了代码混淆，加入白名单即可。</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; 由于spire.pdf.dll免费版本的限制，OFD只支持前3页转换为PDF。</p>
+<body>
+    <div class="container">
+        <section class="carousel-section">
+            <div id="carousel__container">
+                <div class="img__container">
+                    <img class="carousel__img" src="img/img1.png" alt="软件界面预览1" />
+                </div>
+                <div class="img__container">
+                    <img class="carousel__img" src="img/img2.png" alt="软件界面预览2" />
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <div class="dots-container" id="dotsContainer"></div>
+            </div>
+        </section>
+
+        <section class="download-section">
+            <a href="https://github.com/PrintPDF/PrintPDF.github.io/releases/download/PrintPDF/PrintPDF.7z" class="download-btn">
+                ⬇️ 立即下载 5.1.9
+            </a>
+        </section>
+
+        <div class="content-grid">
+            <div class="card">
+                <h2>📋 更新日志</h2>
+                <ul class="changelog">
+                    <li>MiniExcel更新至1.46.0</li>
+                    <li>导出列表信息支持统计金额</li>
+                    <li>修复列表金额无法编辑为空的问题</li>
+                    <li>删除冗余代码</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>📖 软件简介</h2>
+                <p>
+                    <strong>发票闪印</strong> 是一款专业的电子发票批量打印辅助工具。
+                    它支持 <strong>PDF、OFD 及图片格式</strong> 的电子发票，无需安装任何 PDF 阅读器即可直接打印。
+                </p>
+                <p>
+                    软件能够智能识别发票类型、自动提取金额信息，并支持 A4 / A5 等多种纸张规格及自定义打印设置。
+                    通过批量导入、快速筛选、一键打印等功能，将原本繁琐的重复操作简化为几次点击，显著提升发票处理效率。
+                </p>
+                <p style="margin-top: 12px;">
+                    ✅ 完全免费 · 绿色免安装 · 解压即用
+                </p>
+            </div>
+
+            <section class="card">
+                <h2>📖 使用说明</h2>
+                <div class="instructions">
+                    <ol>
+                        <li><strong>文件导入</strong>：数量不限，但单个文件限制是 10 页。支持 PDF、OFD 和图片版电子发票（非以上三种文件会自动跳过）。导入方式：拖入软件界面 / 拖至快捷方式或 exe 文件 / 点击按钮 “+” 添加。</li>
+                        <li><strong>红色标记</strong>：被标记的文件可能是未知票据类型或非电子发票，不会被打印。可通过手动调整票据类型取消限制，或在高级设置中永久取消。</li>
+                        <li><strong>横、纵向菜单</strong>：当票据页面上下两边长度大于左右两边时，打印由横向页面控制，反之由纵向页面控制。</li>
+                        <li><strong>A4 分割</strong>：支持一张 A4 纸划分为 2–4 份，菜单路径：横向页面 - A4 - A4 纸设置。</li>
+                        <li><strong>A5 纸张</strong>：宽 140、120–127mm 的纸张都算是 A5 纸，当打印机提示放入 A5 纸时，将凭证纸放入即可。</li>
+                        <li><strong>预览</strong>：双击文件列表即可预览，鼠标滚轮缩放，双击预览界面可勾选。</li>
+                        <li><strong>保存设置</strong>：支持保存打印机、份数、纸张、颜色、纸盒等设置（文件列表不保存），勾选保存设置并关闭界面即可，可在高级设置菜单中设置自动保存。</li>
+                        <li><strong>取消打印</strong>：点击主界面上的“取消打印”可取消任务（不支持远程共享打印机）。</li>
+                        <li><strong>纸盒优化</strong>：单纸盒打印机纸张输出优化（同一台打印机同时使用两种规格纸张时生效）。</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>⚠️ 已知问题</h2>
+                <ul class="known-issues">
+                    <li><strong>部分机器报毒</strong>：纯属误报，因为软件使用了代码混淆，加入白名单即可。</li>
+                    <li><strong>OFD 限制</strong>：由于 spire.pdf.dll 免费版限制，OFD 只支持前 3 页转换为 PDF。</li>
+                </ul>
+            </section>
+        </div>
+
+        <footer class="page-footer">
+            <p>© 2022-2026 发票闪印 · 让打印更高效</p>
+        </footer>
+
+    <script src="carousel.js"></script>
 </body>
-<script src="carousel.js"></script>
 </html>
